@@ -1,7 +1,7 @@
 from fastapi import FastAPI
+from app.core.database import engine,Base
+from app.models import user,todo
 
-app = FastAPI(title="TODO Aplication")
+Base.metadata.create_all(bind=engine)
 
-@app.get("/")
-def root():
-    return {'message':'Server are Running!'}
+app=FastAPI(title="Todo Application")
